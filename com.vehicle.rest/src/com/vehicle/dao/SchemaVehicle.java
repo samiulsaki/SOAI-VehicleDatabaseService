@@ -151,5 +151,63 @@ public class SchemaVehicle extends OracleVehicle {
 	}
 	
 	
+	/**
+	 * This method will search for the specific brand and the brands item number in
+	 * the VEHICLE_REGS table.
+	 * 
+	 * By using prepareStatement and the ?, we are protecting against sql injection
+	 * 
+	 * Never add parameter straight into the prepareStatement
+	 * 
+	 * @param brand - vehicle brand
+	 * @param model - vehicle model
+	 * @param year  - vehicle manufacturing year
+	 * @return - json array of the results from the database
+	 * @throws Exception
+	 */
+	public JSONArray queryReturnBrandModelYear(String brand, String model, int year) throws Exception {
+		
+		PreparedStatement query = null;
+		Connection conn = null;
+		
+		ToJSON converter = new ToJSON();
+		JSONArray json = new JSONArray();
+		
+		try {
+			conn = oracleVehicleRegsConnection();
+			query = conn.prepareStatement("select VEHICLE_REGS_REG, VEHICLE_REGS_BRAND, VEHICLE_REGS_MODEL, VEHICLE_REGS_MANU_YEAR, VEHICLE_REGS_OWNER_FIRST_NAME, VEHICLE_REGS_OWNER_LAST_NAME, VEHICLE_REGS_FIRST_REG " +
+											"from VEHICLE_REGS " +
+											"where UPPER(VEHICLE_REGS_BRAND) = ? " +
+											"and UPPER(VEHICLE_REGS_MODEL) = ?"	+
+											"and VEHICLE_REGS_MANU_YEAR	= ?");
+			
+			/*
+			 * protect against sql injection
+			 * when you have more than one ?, it will go in chronological
+			 * order.
+			 */
+			query.setString(1, brand.toUpperCase()); //first ?
+			query.setString(2, model.toUpperCase()); //second ?
+			query.setInt(3,	year); //third ?
+			ResultSet rs = query.executeQuery();
+			
+			json = converter.toJSONArray(rs);
+			query.close(); //close connection
+		}
+		catch(SQLException sqlError) {
+			sqlError.printStackTrace();
+			return json;
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			return json;
+		}
+		finally {
+			if (conn != null) conn.close();
+		}
+		
+		return json;
+	}
+	
 	
 }

@@ -62,7 +62,7 @@ public class V2_inventory {
 	}
 	
 	/*
-	 * This method can be used if the method returnBrandParts is not used.
+	 * This method can be used if the method returnVehicleRegs is not used.
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response returnErrorOnBrand() throws Exception {
@@ -115,39 +115,41 @@ public class V2_inventory {
 	 * It uses PathParam to bring in both parameters.
 	 * 
 	 * Example:
-	 * http://localhost:7001/com.vehicle.rest/api/v2/inventory/<model>/<registration>
+	 * http://localhost:7001/com.vehicle.rest/api/v2/inventory/<brand>/<model>/<year>
 	 * 
-	 * @param reg - vehicle registration number
-	 * @param model - vehicle model number
+	 * @param brand - vehicle brand
+	 * @param model - vehicle model
+	 * @param year 	- vehicle manufacturing year
 	 * @return - json array results list from the database
 	 * @throws Exception
 	 */
-//	@Path("/{model}/{reg}")
-//	@GET
-//	@Produces(MediaType.APPLICATION_JSON)
-//	public Response returnSpecificModelRegs(
-//				@PathParam("model") String model,
-//				@PathParam("reg") String reg) 
-//				throws Exception {
-//		
-//		String returnString = null;
-//		
-//		JSONArray json = new JSONArray();
-//		
-//		try {
-//			
-//			SchemaVehicle dao = new SchemaVehicle();
-//			
-//			json = dao.queryReturnModelRegs(model, reg);
-//			returnString = json.toString();
-//		}
-//		catch (Exception e) {
-//			e.printStackTrace();
-//			return Response.status(500).entity("Server was not able to process your request").build();
-//		}
-//		
-//		return Response.ok(returnString).build();
-//	}
+	@Path("/{brand}/{model}/{year}")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response returnSpecificBrandModelYear (
+				@PathParam("brand") String brand,
+				@PathParam("model") String model,
+				@PathParam("year") int year) 
+				throws Exception {
+		
+		String returnString = null;
+		
+		JSONArray json = new JSONArray();
+		
+		try {
+			
+			SchemaVehicle dao = new SchemaVehicle();
+			
+			json = dao.queryReturnBrandModelYear(brand, model, year);
+			returnString = json.toString();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			return Response.status(500).entity("Server was not able to process your request").build();
+		}
+		
+		return Response.ok(returnString).build();
+	}
 	
 	/**
 	 * This method will allow you to insert data the VEHICLE_REGS table.  
