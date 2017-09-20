@@ -23,47 +23,54 @@ import com.vehicle.util.ToJSON;
 
 public class SchemaVehicle extends OracleVehicle {
 
+	
+	
+	
 	/**
-	 * This method allows you to delete a row from VEHICLE_REGS table
+	 * This method will search for a specific brand from the VEHICLE_REG table.
+	 * By using prepareStatement and the ?, we are protecting against sql injection
 	 * 
-	 * If you need to do a delete, consider moving the data to a archive table, then
-	 * delete. Or just make the data invisible to the user.  Delete data can be
-	 * very dangerous.
+	 * Never add parameter straight into the prepareStatement
 	 * 
-	 * @param pk
-	 * @return
+	 * @param reg - vehicle registration
+	 * @return - json array of the results from the database
 	 * @throws Exception
 	 */
-	
-	public int deleteVEHICLE_REGS(int pk) throws Exception {
+	public JSONArray queryReturnVehicleRegs(String reg) throws Exception {
 		
 		PreparedStatement query = null;
 		Connection conn = null;
 		
+		ToJSON converter = new ToJSON();
+		JSONArray json = new JSONArray();
+		
 		try {
-			
-			/*
-			 * If this was a real application, you should do data validation here
-			 * before deleting data.
-			 */
 			conn = oracleVehicleRegsConnection();
-			query = conn.prepareStatement("delete from VEHICLE_REGS " +
-											"where VEHICLE_REGS_REG = ? ");
+			query = conn.prepareStatement("select VEHICLE_REGS_REG, VEHICLE_REGS_BRAND, VEHICLE_REGS_MODEL, VEHICLE_REGS_MANU_YEAR, VEHICLE_REGS_OWNER_FIRST_NAME, VEHICLE_REGS_OWNER_LAST_NAME, VEHICLE_REGS_FIRST_REG " +
+											"from VEHICLE_REGS " +
+											"where UPPER(VEHICLE_REGS_REG) = ? ");
 			
-			query.setInt(1, pk);
-			query.executeUpdate();
+			query.setString(1, reg.toUpperCase()); //protect against sql injection
+			ResultSet rs = query.executeQuery();
 			
+			json = converter.toJSONArray(rs);
+			query.close(); //close connection
+		}
+		catch(SQLException sqlError) {
+			sqlError.printStackTrace();
+			return json;
 		}
 		catch(Exception e) {
 			e.printStackTrace();
-			return 500;
+			return json;
 		}
 		finally {
 			if (conn != null) conn.close();
 		}
 		
-		return 200;
-		
+		return json;
 	}
+	
+	
 	
 }

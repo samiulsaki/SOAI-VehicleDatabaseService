@@ -10,6 +10,8 @@ import javax.ws.rs.core.Response;
 
 import org.codehaus.jettison.json.JSONArray;
 
+import com.vehicle.dao.SchemaVehicle;
+
 @Path("/v2/inventory")
 public class V2_inventory {
 	
@@ -27,8 +29,8 @@ public class V2_inventory {
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response returnVehicleBrands(
-				@QueryParam("brand") String brand)
+	public Response returnVehicleRegs(
+				@QueryParam("reg") String reg)
 				throws Exception {
 		
 		String returnString = null;
@@ -36,7 +38,10 @@ public class V2_inventory {
 		
 		try {
 			
+			SchemaVehicle dao = new SchemaVehicle();
 			
+			json = dao.queryReturnVehicleRegs(reg);
+			returnString = json.toString();
 			
 		}
 		catch (Exception e) {
