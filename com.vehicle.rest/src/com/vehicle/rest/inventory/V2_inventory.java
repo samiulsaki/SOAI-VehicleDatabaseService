@@ -151,6 +151,46 @@ public class V2_inventory {
 		return Response.ok(returnString).build();
 	}
 	
+
+	/**
+	 * This method does a search on both product and the product item number.
+	 * It uses PathParam to bring in both parameters.
+	 * 
+	 * Example:
+	 * http://localhost:7001/com.vehicle.rest/api/v2/inventory/<brand>/<reg>
+	 * 
+	 * @param brand - vehicle brand
+	 * @param reg 	- vehicle registration number
+	 * @return - json array results list from the database
+	 * @throws Exception
+	 */
+	@Path("/{brand}/{reg}")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response returnSpecificBrandModelYear (
+				@PathParam("brand") String brand,
+				@PathParam("reg") String reg) 
+				throws Exception {
+		
+		String returnString = null;
+		
+		JSONArray json = new JSONArray();
+		
+		try {
+			
+			SchemaVehicle dao = new SchemaVehicle();
+			
+			json = dao.queryReturnBrandReg(brand, reg);
+			returnString = json.toString();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			return Response.status(500).entity("Server was not able to process your request").build();
+		}
+		
+		return Response.ok(returnString).build();
+	}
+	
 	/**
 	 * This method will allow you to insert data the VEHICLE_REGS table.  
 	 * This is a example of using the Jackson Processor
