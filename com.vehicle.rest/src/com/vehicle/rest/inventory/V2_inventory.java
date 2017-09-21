@@ -195,7 +195,7 @@ public class V2_inventory {
 	 * This method will allow you to insert data the VEHICLE_REGS table.  
 	 * This is a example of using the Jackson Processor
 	 * 
-	 * Note: If you look, this method addPcParts using the same URL as a GET method returnVehicleRegs.
+	 * Note: If you look, this method addVehicleRegs using the same URL as a GET method returnVehicleRegs.
 	 * 			We can do this because we are using different HTTP methods for the same URL string.
 	 * 
 	 * @param incomingData - must be in JSON format
@@ -206,7 +206,7 @@ public class V2_inventory {
 	@Consumes({MediaType.APPLICATION_FORM_URLENCODED,MediaType.APPLICATION_JSON}) // for both web form and application.JSON 
 	//@Consumes(MediaType.APPLICATION_FORM_URLENCODED) 							  // for only web forms
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response addVehicleRegsPcParts(String incomingData) throws Exception {
+	public Response addVehicleRegs(String incomingData) throws Exception {
 		
 		String returnString = null;
 		//JSONArray jsonArray = new JSONArray(); //not needed
@@ -216,9 +216,6 @@ public class V2_inventory {
 			System.out.println("incomingData: " + incomingData);
 			
 			/*
-			 * ObjectMapper is from Jackson Processor framework
-			 * http://jackson.codehaus.org/
-			 * 
 			 * Using the readValue method, you can parse the json from the http request
 			 * and data bind it to a Java Class.
 			 */
@@ -252,7 +249,7 @@ public class V2_inventory {
 
 
 /*
- * This is a class used by the addPcParts method.
+ * This is a class used by the addVehicleRegs method.
  * Used by the Jackson Processor
  * 
  * Note: for re-usability you should place this in its own package.

@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<title>Vehicle Database: POST</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="js/jquery-min.js" type="text/javascript"></script>
+	<script src="js/polyfill.js"></script>
+	<script src="js/post.js"></script>
+	
+</head>
+<body>
+
+<h1>Vehicle Database Post</h1>
+
+<form id="post_example" name="post_example" action="#">
+<table>
+<tr>
+	<td>VEHICLE_REGS_REG</td>
+	<td><input type="text" name="VEHICLE_REGS_REG" id="VEHICLE_REGS_REG" maxlength="10" value="NOXXXXXXXX"></td>
+</tr>
+<tr>
+	<td>VEHICLE_REGS_BRAND</td>
+	<td><input type="text" name="VEHICLE_REGS_BRAND" id="VEHICLE_REGS_BRAND" maxlength="20" value="AUDI"></td>
+</tr>
+<tr>
+	<td>VEHICLE_REGS_MODEL</td>
+	<td><input type="text" name="VEHICLE_REGS_MODEL" id="VEHICLE_REGS_MODEL" maxlength="10" value="XXX"></td>
+</tr>
+<tr>
+	<td>VEHICLE_REGS_MANU_YEAR</td>
+	<td><input type="text" name="VEHICLE_REGS_MANU_YEAR" id="VEHICLE_REGS_MANU_YEAR" maxlength="4" value="2000"></td>
+</tr>
+<tr>
+	<td>VEHICLE_REGS_OWNER_FIRST_NAME</td>
+	<td><input type="text" name="VEHICLE_REGS_OWNER_FIRST_NAME" id="VEHICLE_REGS_OWNER_FIRST_NAME" maxlength="20" value="OLA / KARI"></td>
+</tr>
+<tr>
+	<td>VEHICLE_REGS_OWNER_LAST_NAME</td>
+	<td><input type="text" name="VEHICLE_REGS_OWNER_LAST_NAME" id="VEHICLE_REGS_OWNER_LAST_NAME" maxlength="20" value="NILSEN"></td>
+</tr>
+<tr>
+	<td>VEHICLE_REGS_FIRST_REG</td>
+	<td><input type="text" name="VEHICLE_REGS_FIRST_REG" id="VEHICLE_REGS_FIRST_REG" maxlength="15" value="dd-MM-YYYY"></td>
+</tr>
+<tr>
+	<td></td>
+	<td><input type="button" name="submit_it" id="submit_it" value="Submit"> Using Jackson Mapper</td>
+</tr>
+<tr>
+	<td></td>
+	<td><input type="button" name="submit_it2" id="submit_it2" value="Submit v2"> Using JSON Array and Object</td>
+</tr>
+</table>
+</form>
+
+<br />
+<div id="div_ajaxResponse"></div>
+
+</body>
+</html>

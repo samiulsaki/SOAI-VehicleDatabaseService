@@ -24,6 +24,47 @@ import com.vehicle.util.ToJSON;
 public class SchemaVehicle extends OracleVehicle {
 
 	
+	/**
+	 * This method allows you to delete a row from VEHICLE_REGS table
+	 * 
+	 * If you need to do a delete, consider moving the data to a archive table, then
+	 * delete. Or just make the data invisible to the user.  Delete data can be
+	 * very dangerous.
+	 * 
+	 * @param reg
+	 * @return
+	 * @throws Exception
+	 */
+	public int deleteVEHICLE_REGS(String reg) throws Exception {
+		
+		PreparedStatement query = null;
+		Connection conn = null;
+		
+		try {
+			/*
+			 * If this was a real application, you should do data validation here
+			 * before deleting data.
+			 */
+			
+			conn = oracleVehicleRegsConnection();
+			query = conn.prepareStatement("delete from VEHICLE_REGS " +
+											"where UPPER(VEHICLE_REGS_REG) = ? ");
+			
+			query.setString(1, reg.toUpperCase());
+			query.executeUpdate();
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+			return 500;
+		}
+		finally {
+			if (conn != null) conn.close();
+		}
+		
+		return 200;
+	}
+	
+		
 	// VEHICLE_REGS_REG, VEHICLE_REGS_BRAND, VEHICLE_REGS_MODEL, VEHICLE_REGS_MANU_YEAR, VEHICLE_REGS_OWNER_FIRST_NAME, VEHICLE_REGS_OWNER_LAST_NAME, VEHICLE_REGS_FIRST_REG " +
 	/**
 	 * This method will insert a record into the VEHICLE_REGS table. 
@@ -63,7 +104,7 @@ public class SchemaVehicle extends OracleVehicle {
 			 * 		SQL insert query below.
 			 */
 			conn = oracleVehicleRegsConnection();
-			query = conn.prepareStatement("insert into VEHCILE_REGS " +
+			query = conn.prepareStatement("insert into VEHICLE_REGS " +
 					"(VEHICLE_REGS_REG, VEHICLE_REGS_BRAND, VEHICLE_REGS_MODEL, VEHICLE_REGS_MANU_YEAR, VEHICLE_REGS_OWNER_FIRST_NAME, VEHICLE_REGS_OWNER_LAST_NAME, VEHICLE_REGS_FIRST_REG) " +
 					"VALUES ( ?, ?, ?, ?, ? , ? , ?) ");
 
@@ -97,16 +138,9 @@ public class SchemaVehicle extends OracleVehicle {
 		return 200;
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	/**
-	 * This method will search for a specific brand from the VEHICLE_REG table.
+	 * This method will search for a specific registration from the VEHICLE_REGS table.
 	 * By using prepareStatement and the ?, we are protecting against sql injection
 	 * 
 	 * Never add parameter straight into the prepareStatement
@@ -152,7 +186,7 @@ public class SchemaVehicle extends OracleVehicle {
 	
 	
 	/**
-	 * This method will search for the specific brand and the brands item number in
+	 * This method will search for the specific brand and the brands model and year in
 	 * the VEHICLE_REGS table.
 	 * 
 	 * By using prepareStatement and the ?, we are protecting against sql injection
@@ -211,7 +245,7 @@ public class SchemaVehicle extends OracleVehicle {
 	
 	
 	/**
-	 * This method will search for the specific brand and the brands item number in
+	 * This method will search for the specific brand and the manufacturing year in
 	 * the VEHICLE_REGS table.
 	 * 
 	 * By using prepareStatement and the ?, we are protecting against sql injection
@@ -265,5 +299,82 @@ public class SchemaVehicle extends OracleVehicle {
 		return json;
 	}
 	
+
+	/**
+	 * This method will return all Vehicle items.
+	 * 
+	 * @return - all Vehicle items in json format
+	 * @throws Exception
+	 */
+	public JSONArray queryAllVehicleRegs() throws Exception {
+		
+		PreparedStatement query = null;
+		Connection conn = null;
+		
+		ToJSON converter = new ToJSON();
+		JSONArray json = new JSONArray();
+		
+		try {
+			conn = oracleVehicleRegsConnection();
+			query = conn.prepareStatement("select VEHICLE_REGS_REG, VEHICLE_REGS_BRAND, VEHICLE_REGS_MODEL, VEHICLE_REGS_MANU_YEAR, VEHICLE_REGS_OWNER_FIRST_NAME, VEHICLE_REGS_OWNER_LAST_NAME, VEHICLE_REGS_FIRST_REG " +
+											"from VEHICLE_REGS");
+			
+			ResultSet rs = query.executeQuery();
+			
+			json = converter.toJSONArray(rs);
+			query.close(); //close connection
+		}
+		catch(SQLException sqlError) {
+			sqlError.printStackTrace();
+			return json;
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			return json;
+		}
+		finally {
+			if (conn != null) conn.close();
+		}
+		
+		return json;
+	}
 	
+	/**
+	 * This method will return a time/stamp from database.
+	 * 
+	 * @return time/stamp in json format
+	 * @throws Exception
+	 */
+	public JSONArray queryCheckDbConnection() throws Exception {
+		
+		PreparedStatement query = null;
+		Connection conn = null;
+		
+		ToJSON converter = new ToJSON();
+		JSONArray json = new JSONArray();
+		
+		try {
+			conn = oracleVehicleRegsConnection();
+			query = conn.prepareStatement("select to_char(sysdate,'YYYY-MM-DD HH24:MI:SS') DATETIME " +
+											"from sys.dual");
+			
+			ResultSet rs = query.executeQuery();
+			
+			json = converter.toJSONArray(rs);
+			query.close(); //close connection
+		}
+		catch(SQLException sqlError) {
+			sqlError.printStackTrace();
+			return json;
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			return json;
+		}
+		finally {
+			if (conn != null) conn.close();
+		}
+		
+		return json;
+	}
 }
