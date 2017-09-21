@@ -1,14 +1,47 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Vehicle Database</title>
-</head>
-<body>
-<h1>Read Me</h1>
-<p>This is a How to create a Java Restful Service tutorial series on YouTube. <br />
-	Please go to http://www.vehicle.com/
-</p>
-<hr>
-</body>
-</html>
+<h1><strong>Read Me</strong></h1>
+<p>This is a How to create a Java Restful Service. Please go to&nbsp;<a href="http://www.vehicle.com/" target="_blank" rel="noopener">http://www.vehicle.com/</a></p>
+<hr />
+<h2>Inventory</h2>
+<p><strong>To get the version status click:</strong></p>
+<p><a href="http://localhost:7001/com.vehicle.rest/api/v1/status/version">http://localhost:7001/com.vehicle.rest/api/v1/status/version</a>&nbsp;</p>
+<p><strong>To get the entire database in JSONArray format click:</strong></p>
+<p><a href="http://localhost:7001/com.vehicle.rest/api/inventory">http://localhost:7001/com.vehicle.rest/api/inventory</a></p>
+<p><strong>To get the specific search pattern choose either of the method:</strong></p>
+<p><a href="http://localhost:7001/com.vehicle.rest/api/v2/inventory?reg=">http://localhost:7001/com.vehicle.rest/api/v2/inventory?reg=&lt;registration_number&gt;</a></p>
+<p>and enter any known vehicle /<em><span style="text-decoration: underline;">registration number</span></em>&nbsp;at the end or the URL.&nbsp;</p>
+<p><strong><em>or</em></strong>&nbsp;</p>
+<p><a href="http://localhost:7001/com.vehicle.rest/api/v2/inventory/">http://localhost:7001/com.vehicle.rest/api/v2/inventory/&lt;brand&gt;/&lt;registration_number&gt;</a></p>
+<p>and enter any known vehicle /<em><span style="text-decoration: underline;">brand/registration number</span> </em>at the end of the URI to be a little more precise.</p>
+<p><em><strong>or&nbsp;</strong></em></p>
+<p><a href="http://localhost:7001/com.vehicle.rest/api/v2/inventory/">http://localhost:7001/com.vehicle.rest/api/v2/inventory/&lt;brand&gt;/&lt;model&gt;/&lt;manufacturing_year&gt;</a></p>
+<p>and enter any known vehicle /<em>brand/model/year&nbsp;</em>at the end of the URI to be a more precise.&nbsp;</p>
+<hr />
+<h2>POST</h2>
+<p>The POST method to insert into the database table. Two different ways to do that:</p>
+<ul>
+<li>One using data binding (object mapping)</li>
+<li>Second is to use JSONArrays and JSONObjects</li>
+</ul>
+<p>Both ways are valid, choose which one you want to go with. Following link will open the POST web form:</p>
+<p><a href="http://localhost:7001/com.vehicle.rest/post.html">POST web form</a></p>
+<hr />
+<h2>PUT</h2>
+<p>The PUT method very similar to the POST method.&nbsp;Click on the link for a demo of PUT, this web form will allow you to update the registration number number. <br /> <a href="http://localhost:7001/com.vehicle.rest/put.html">PUT web form</a></p>
+<hr />
+<h2>DELETE</h2>
+<p>The DELETE web form will allow you to delete a row from the database table. <br /> <a href="http://localhost:7001/com.vehicle.rest/delete.html">DELETE web form</a></p>
+<hr />
+<h4>System Requirements:</h4>
+<p><span style="font-size: 14px;">Oracle Database</span></p>
+<p><span style="font-size: 14px;">SQL Developer</span></p>
+<p>Eclipse</p>
+<p>Oracle Weblogic Server</p>
+<hr />
+<p><span style="color: #0000ff;">Author:</span></p>
+<p><span style="color: #0000ff;">Samiul Saki Chowdhury</span></p>
+<p><span style="color: #0000ff;">Email: <a href="mailto:samiulsaki@gmail.com">samiulsaki@gmail.com</a>&nbsp;; Portfolio:&nbsp;<a href="https://samiulsaki.wordpress.com" target="_blank" rel="noopener">https://samiulsaki.wordpress.com</a>&nbsp;;&nbsp;</span><span style="color: #0000ff;">Github: <a href="https://github.com/samiulsaki" target="_blank" rel="noopener">samiulsaki</a>&nbsp;;&nbsp;</span></p>
+<p><span style="color: #0000ff;">This project:&nbsp;<a href="https://github.com/samiulsaki/unik4730.git" target="_blank" rel="noopener">https://github.com/samiulsaki/unik4730.git</a></span></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>

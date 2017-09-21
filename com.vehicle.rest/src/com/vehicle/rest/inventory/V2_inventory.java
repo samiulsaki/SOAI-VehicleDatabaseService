@@ -167,7 +167,7 @@ public class V2_inventory {
 	@Path("/{brand}/{reg}")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response returnSpecificBrandModelYear (
+	public Response returnSpecificBrandReg (
 				@PathParam("brand") String brand,
 				@PathParam("reg") String reg) 
 				throws Exception {
