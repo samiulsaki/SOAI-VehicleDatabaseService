@@ -23,6 +23,7 @@ $(document).ready(function() {
 	});
 });
 
+
 function deleteInventory(obj, brand, reg) {
 	
 	ajaxObj = {  

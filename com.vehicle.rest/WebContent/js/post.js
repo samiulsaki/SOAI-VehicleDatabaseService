@@ -6,6 +6,9 @@
  * 
  * jquery is required
  */
+
+getInventory();
+
 $(document).ready(function() {
 	//console.log("ready");
 	
@@ -41,6 +44,7 @@ $(document).ready(function() {
 			},
 			complete: function(XMLHttpRequest) {
 				//console.log( XMLHttpRequest.getAllResponseHeaders() );
+				getInventory();
 			}, 
 			dataType: "json" //request JSON
 		};
@@ -78,6 +82,7 @@ $(document).ready(function() {
 			},
 			complete: function(XMLHttpRequest) {
 				//console.log( XMLHttpRequest.getAllResponseHeaders() );
+				getInventory();
 			}, 
 			dataType: "json" //request JSON
 		};
@@ -85,3 +90,51 @@ $(document).ready(function() {
 		$.ajax(ajaxObj);
 	});
 });
+
+
+
+function getInventory() {
+	
+	var d = new Date()
+		, n = d.getTime();
+	
+	ajaxObj = {  
+			type: "GET",
+			url: "http://localhost:7001/com.vehicle.rest/api/v1/inventory", 
+			data: "ts="+n, 
+			contentType:"application/json",
+			error: function(jqXHR, textStatus, errorThrown) {
+				console.log(jqXHR.responseText);
+			},
+			success: function(data) { 
+				//console.log(data);
+				var html_string = "";
+				
+				$.each(data, function(index1, val1) {
+					console.log(val1);
+					html_string = html_string + templateGetInventory(val1);
+				});
+				
+				$('#get_inventory').html("<table border='1'>" + html_string + "</table>");
+			},
+			complete: function(XMLHttpRequest) {
+				//console.log( XMLHttpRequest.getAllResponseHeaders() );
+			}, 
+			dataType: "json" //request JSON
+		};
+		
+	return $.ajax(ajaxObj);
+}
+
+function templateGetInventory(param) {
+	return '<tr>' +
+				'<td class="CL_VEHICLE_REGS_BRAND">' + param.VEHICLE_REGS_BRAND + '</td>' +
+				'<td class="CL_VEHICLE_REGS_REG">' + param.VEHICLE_REGS_REG + '</td>' +
+				'<td class="CL_VEHICLE_REGS_MODEL">' + param.VEHICLE_REGS_MODEL + '</td>' +
+				'<td class="CL_VEHICLE_REGS_MANU_YEAR">' + param.VEHICLE_REGS_MANU_YEAR + '</td>' +
+				'<td class="CL_VEHICLE_REGS_OWNER_FIRST_NAME">' + param.VEHICLE_REGS_OWNER_FIRST_NAME + '</td>' +
+				'<td class="CL_VEHICLE_REGS_OWNER_LAST_NAME">' + param.VEHICLE_REGS_OWNER_LAST_NAME + '</td>' +
+				'<td class="CL_VEHICLE_REGS_FIRST_REG">' + param.VEHICLE_REGS_FIRST_REG + '</td>' +
+				//'<td class="CL_VEHICLE_REGS_BTN"> <button class="UPDATE_BTN" value=" ' + param.VEHICLE_REGS_PK + ' " type="button">Update</button> </td>' +
+			'</tr>';
+}

@@ -127,7 +127,7 @@ public class V3_inventory {
 									String incomingData) 
 								throws Exception {
 		
-		//System.out.println("incomingData: " + incomingData);
+		System.out.println("incomingData: " + incomingData);
 		//System.out.println("brand: " + brand);
 		//System.out.println("reg: " + reg);
 		
@@ -180,7 +180,7 @@ public class V3_inventory {
 	 * URL path for each http method (GET, POST, PUT, DELETE, HEAD)
 	 * 
 	 * @param brand
-	 * @param item
+	 * @param reg
 	 * @param incomingData
 	 * @return
 	 * @throws Exception
@@ -194,9 +194,9 @@ public class V3_inventory {
 									String incomingData) 
 								throws Exception {
 		
-		//System.out.println("incomingData: " + incomingData);
-		//System.out.println("brand: " + brand);
-		//System.out.println("item_number: " + item_number);
+		System.out.println("incomingData: " + incomingData);
+		System.out.println("brand: " + brand);
+		System.out.println("reg: " + reg);
 		
 		int pk;
 		int http_code;
@@ -208,22 +208,23 @@ public class V3_inventory {
 		try {
 			
 			JSONObject partsData = new JSONObject(incomingData);
-			pk = partsData.optInt("VECHICLE_REGS_PK", 0);
+			pk = partsData.optInt("VEHICLE_REGS_PK", 0);
 			
 			http_code = dao.deleteVEHICLE_REGS(pk);
+			
 			
 			if(http_code == 200) {
 				jsonObject.put("HTTP_CODE", "200");
 				jsonObject.put("MSG", "Item has been deleted successfully");
 			} else {
-				return Response.status(500).entity("Server was not able to process your request").build();
+				return Response.status(500).entity("Hello Server was not able to process your request").build();
 			}
 			
 			returnString = jsonArray.put(jsonObject).toString();
 			
 		} catch(Exception e) {
 			e.printStackTrace();
-			return Response.status(500).entity("Server was not able to process your request").build();
+			return Response.status(500).entity("Hi Server was not able to process your request").build();
 		}
 		
 		return Response.ok(returnString).build();

@@ -12,12 +12,13 @@
 <body>
 
 <h1>Vehicle Database Post</h1>
-
+<div id="get_inventory"></div>
+<br /><br />
 <form id="post_example" name="post_example" action="#">
 <table>
 <tr>
 	<td>VEHICLE_REGS_REG</td>
-	<td><input type="text" name="VEHICLE_REGS_REG" id="VEHICLE_REGS_REG" maxlength="10" value="NOXXXXXXXX"></td>
+	<td><input type="text" name="VEHICLE_REGS_REG" id="VEHICLE_REGS_REG" maxlength="10" value="NOXXXXXXXX"/>&nbsp;<span style="color: #ff6600;">(<em>use capital letters)</em></span></td>
 </tr>
 <tr>
 	<td>VEHICLE_REGS_BRAND</td>
@@ -29,7 +30,7 @@
 </tr>
 <tr>
 	<td>VEHICLE_REGS_MANU_YEAR</td>
-	<td><input type="text" name="VEHICLE_REGS_MANU_YEAR" id="VEHICLE_REGS_MANU_YEAR" maxlength="4" value="2000"></td>
+	<td><input type="text" name="VEHICLE_REGS_MANU_YEAR" id="VEHICLE_REGS_MANU_YEAR" maxlength="4" value="9999"/>&nbsp;<span style="color: #ff6600;"><em>(eg. YYYY format)</em></span></td>
 </tr>
 <tr>
 	<td>VEHICLE_REGS_OWNER_FIRST_NAME</td>
@@ -41,15 +42,15 @@
 </tr>
 <tr>
 	<td>VEHICLE_REGS_FIRST_REG</td>
-	<td><input type="text" name="VEHICLE_REGS_FIRST_REG" id="VEHICLE_REGS_FIRST_REG" maxlength="15" value="dd-MM-YYYY"></td>
+	<td><input type="text" name="VEHICLE_REGS_FIRST_REG" id="VEHICLE_REGS_FIRST_REG" maxlength="15" value="dd-MM-YYYY"/>&nbsp;<em><span style="color: #ff6600;">(eg. 25-Dec-2017)</span></em></td>
 </tr>
 <tr>
 	<td></td>
-	<td><input type="button" name="submit_it" id="submit_it" value="Submit"> Using Jackson Mapper</td>
+	<td><input type="button" name="submit_it" id="submit_it" value="Submit" />&nbsp;<em><span style="color: #ff6600;">(Jackson Mapper)</span></em></td>
 </tr>
 <tr>
 	<td></td>
-	<td><input type="button" name="submit_it2" id="submit_it2" value="Submit v2"> Using JSON Array and Object</td>
+	<td><input type="button" name="submit_it2" id="submit_it2" value="Submit v2" />&nbsp;<em><span style="color: #ff6600;">(JSON Array and Object)</span></em></td>
 </tr>
 </table>
 </form>
