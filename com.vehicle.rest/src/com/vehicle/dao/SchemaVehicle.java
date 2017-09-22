@@ -31,11 +31,11 @@ public class SchemaVehicle extends OracleVehicle {
 	 * delete. Or just make the data invisible to the user.  Delete data can be
 	 * very dangerous.
 	 * 
-	 * @param reg
+	 * @param pk
 	 * @return
 	 * @throws Exception
 	 */
-	public int deleteVEHICLE_REGS(String reg) throws Exception {
+	public int deleteVEHICLE_REGS(int pk) throws Exception {
 		
 		PreparedStatement query = null;
 		Connection conn = null;
@@ -45,12 +45,11 @@ public class SchemaVehicle extends OracleVehicle {
 			 * If this was a real application, you should do data validation here
 			 * before deleting data.
 			 */
-			
+			System.out.println("pk: " + pk);
 			conn = oracleVehicleRegsConnection();
-			query = conn.prepareStatement("delete from VEHICLE_REGS " +
-											"where UPPER(VEHICLE_REGS_REG) = ? ");
+			query = conn.prepareStatement("delete from VEHICLE_REGS where VEHICLE_REGS_PK = ? ");
 			
-			query.setString(1, reg.toUpperCase());
+			query.setInt(1, pk);
 			query.executeUpdate();
 			
 		} catch(Exception e) {
@@ -64,7 +63,52 @@ public class SchemaVehicle extends OracleVehicle {
 		return 200;
 	}
 	
+	
+	/**
+	 * This method allows you to update VEHICLE_REGS table
+	 * 
+	 * Note: there is no validation being done... if this was a real project you
+	 * must do validation here!
+	 * 
+	 * @param pk
+	 * @param fname
+	 * @param lname
+	 * @return
+	 * @throws Exception
+	 */
+	public int updateVEHICLE_REGS(String fname, String lname, int pk) throws Exception {
 		
+		PreparedStatement query = null;
+		Connection conn = null;
+		
+		try {
+			/*
+			 * If this was a real application, you should do data validation here
+			 * before updating data.
+			 */
+			//System.out.println("fname: " + fname);
+			//System.out.println("lname: " + lname);
+			//System.out.println("pk: " + pk);
+			conn = oracleVehicleRegsConnection();
+			query = conn.prepareStatement("update VEHICLE_REGS set VEHICLE_REGS_OWNER_FIRST_NAME = ?, VEHICLE_REGS_OWNER_LAST_NAME = ? where VEHICLE_REGS_PK = ? ");
+			
+			query.setString(1, fname); //first ?
+			query.setString(2, lname); //second ?
+			query.setInt(3, pk); //third ?			
+			query.executeUpdate();
+			
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+			return 500;
+		}
+		finally {
+			if (conn != null) conn.close();
+		}
+		
+		return 200;
+	}
+	
 	// VEHICLE_REGS_REG, VEHICLE_REGS_BRAND, VEHICLE_REGS_MODEL, VEHICLE_REGS_MANU_YEAR, VEHICLE_REGS_OWNER_FIRST_NAME, VEHICLE_REGS_OWNER_LAST_NAME, VEHICLE_REGS_FIRST_REG " +
 	/**
 	 * This method will insert a record into the VEHICLE_REGS table. 
