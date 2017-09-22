@@ -194,7 +194,7 @@ public class V3_inventory {
 									String incomingData) 
 								throws Exception {
 		
-		System.out.println("incomingData: " + incomingData);
+		System.out.println("incomingData: " + incomingData); //showing empty string for some reason
 		System.out.println("brand: " + brand);
 		System.out.println("reg: " + reg);
 		
