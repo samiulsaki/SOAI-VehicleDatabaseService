@@ -1,7 +1,7 @@
 # UNIK4730 - Service Oriented Architecture Implementation #
 =========================================================
 
-At first I would like to appologize for using the oldeer platform of the IDE and database servers. I was following some tutorials online and kinda carried aways using the similar platform as the tutorial was about 5 years old. By the time I finished with the assignment I realised that converting / adjusting the entire project to adjust witht he newer version of the platforms will require doing the project from the begining. I will keep this in mind and will use the latest and and more compact IDE for my future Oblig submission. This version will not work on OSx as I used the Oracle Database Server for my database and Oracle does not provide any database server support for latest OSx. 
+At first I would like to appologize for using the oldeer platform of the IDE and database servers. I was following some tutorials online and kinda carried aways using the similar platform as the tutorial was about 5 years old. By the time I finished with the assignment I realised that converting / adjusting the entire project to adjust witht he newer version of the platforms will require doing the project from the begining. I will keep this in mind and will use the latest and and more compact IDE for my future projects. This version will not work on OSx as I used the Oracle Database Server for my database and Oracle does not provide any database server support for latest OSx. 
 
 ## Requirements: (more like softwares I used)##
 * Operating Sytem: ___Windows 7___
