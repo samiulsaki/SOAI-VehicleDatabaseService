@@ -42,7 +42,7 @@ public class SchemaVehicle extends OracleVehicle {
 		
 		try {
 			/*
-			 * If this was a real application, you should do data validation here
+			 * If this was a real application, we should do data validation here
 			 * before deleting data.
 			 */
 			System.out.println("pk: " + pk);
@@ -67,9 +67,6 @@ public class SchemaVehicle extends OracleVehicle {
 	/**
 	 * This method allows you to update VEHICLE_REGS table
 	 * 
-	 * Note: there is no validation being done... if this was a real project you
-	 * must do validation here!
-	 * 
 	 * @param pk
 	 * @param fname
 	 * @param lname
@@ -82,10 +79,7 @@ public class SchemaVehicle extends OracleVehicle {
 		Connection conn = null;
 		
 		try {
-			/*
-			 * If this was a real application, you should do data validation here
-			 * before updating data.
-			 */
+
 			//System.out.println("fname: " + fname);
 			//System.out.println("lname: " + lname);
 			//System.out.println("pk: " + pk);
@@ -109,12 +103,8 @@ public class SchemaVehicle extends OracleVehicle {
 		return 200;
 	}
 	
-	// VEHICLE_REGS_REG, VEHICLE_REGS_BRAND, VEHICLE_REGS_MODEL, VEHICLE_REGS_MANU_YEAR, VEHICLE_REGS_OWNER_FIRST_NAME, VEHICLE_REGS_OWNER_LAST_NAME, VEHICLE_REGS_FIRST_REG " +
 	/**
 	 * This method will insert a record into the VEHICLE_REGS table. 
-	 * 
-	 * Note: there is no validation being done... if this was a real project you
-	 * must do validation here!
 	 * 
 	 * @param VEHICLE_REGS_REG
 	 * @param VEHICLE_REGS_BRAND
@@ -140,8 +130,6 @@ public class SchemaVehicle extends OracleVehicle {
 
 		try {
 			/*
-			 * If this was a real application, you should do data validation here
-			 * before starting to insert data into the database.
 			 * 
 			 * Important: The primary key on VEHICLE_REGS table will auto increment.
 			 * 		That means the VEHICLE_REGS_REG column does not need to be apart of the 
@@ -186,8 +174,7 @@ public class SchemaVehicle extends OracleVehicle {
 	/**
 	 * This method will search for a specific registration from the VEHICLE_REGS table.
 	 * By using prepareStatement and the ?, we are protecting against sql injection
-	 * 
-	 * Never add parameter straight into the prepareStatement
+	 * We never add parameter straight into the prepareStatement
 	 * 
 	 * @param reg - vehicle registration
 	 * @return - json array of the results from the database
@@ -232,10 +219,7 @@ public class SchemaVehicle extends OracleVehicle {
 	/**
 	 * This method will search for the specific brand and the brands model and year in
 	 * the VEHICLE_REGS table.
-	 * 
 	 * By using prepareStatement and the ?, we are protecting against sql injection
-	 * 
-	 * Never add parameter straight into the prepareStatement
 	 * 
 	 * @param brand - vehicle brand
 	 * @param model - vehicle model
@@ -292,9 +276,6 @@ public class SchemaVehicle extends OracleVehicle {
 	 * This method will search for the specific brand and the manufacturing year in
 	 * the VEHICLE_REGS table.
 	 * 
-	 * By using prepareStatement and the ?, we are protecting against sql injection
-	 * 
-	 * Never add parameter straight into the prepareStatement
 	 * 
 	 * @param brand - vehicle brand
 	 * @param year 	- vehicle registration number
@@ -316,11 +297,7 @@ public class SchemaVehicle extends OracleVehicle {
 											"where UPPER(VEHICLE_REGS_BRAND) = ? " +
 											"and UPPER(VEHICLE_REGS_REG) = ?"	);
 			
-			/*
-			 * protect against sql injection
-			 * when you have more than one ?, it will go in chronological
-			 * order.
-			 */
+
 			query.setString(1, brand.toUpperCase()); //first ?
 			query.setString(2, reg.toUpperCase()); //second ?
 			ResultSet rs = query.executeQuery();

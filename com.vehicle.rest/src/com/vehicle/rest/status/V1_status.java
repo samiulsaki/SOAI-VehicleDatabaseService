@@ -12,7 +12,7 @@ import com.vehicle.dao.*;
  * This is the root path for our restful api service
  * In the web.xml file, we specified that /api/* need to be in the URL to
  * get to this class.
- * 
+ * This I did just to brush up my Java. Not required for Oblig1
  * We are versioning the class in the URL path.  This is the first version v1.
  * Example how to get to the root of this api resource:
  * http://localhost:7001/com.vehicle.rest/api/v1/status

@@ -26,7 +26,7 @@ public class V2_inventory {
 	 * Example would be:
 	 * http://localhost:7001/com.vehicle.rest/api/v2/inventory?brand=Audi
 	 * 
-	 * @param brand - product brand name
+	 * @param brand - vehicle brand
 	 * @return - json array results list from the database
 	 * @throws Exception
 	 */
@@ -195,8 +195,8 @@ public class V2_inventory {
 	 * This method will allow you to insert data the VEHICLE_REGS table.  
 	 * This is a example of using the Jackson Processor
 	 * 
-	 * Note: If you look, this method addVehicleRegs using the same URL as a GET method returnVehicleRegs.
-	 * 			We can do this because we are using different HTTP methods for the same URL string.
+	 * The method addVehicleRegs using the same URL as a GET method returnVehicleRegs.
+	 * 	We can do this because we are using different HTTP methods for the same URL string.
 	 * 
 	 * @param incomingData - must be in JSON format
 	 * @return String
@@ -252,7 +252,7 @@ public class V2_inventory {
  * This is a class used by the addVehicleRegs method.
  * Used by the Jackson Processor
  * 
- * Note: for re-usability you should place this in its own package.
+ * Note: for re-usability we should place this in its own package.
  */
 
 class ItemEntry {

@@ -17,7 +17,6 @@ public class V1_header {
 
 	/**
 	 * This resource is a example of how to look at the http header.
-	 * You will need to bring in the hsr as a parameter
 	 * 
 	 * @param hsr
 	 * @return

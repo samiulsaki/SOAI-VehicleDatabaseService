@@ -16,7 +16,7 @@ public class HttpClient {
 	/**
 	 * http client that does not use SSL
 	 * This is only a example, you may need to change it to fix your needs.
-	 * 
+	 * This is not required for Oblig1
 	 * @return
 	 * @throws Exception
 	 */
