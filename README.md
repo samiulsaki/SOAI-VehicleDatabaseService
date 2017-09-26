@@ -4,16 +4,16 @@
 At first I would like to appologize for using the oldeer platform of the IDE and database servers. I was following some tutorials online and kinda carried aways using the similar platform as the tutorial was about 5 years old. By the time I finished with the assignment I realised that converting / adjusting the entire project to adjust witht he newer version of the platforms will require doing the project from the begining. I will keep this in mind and will use the latest and and more compact IDE for my future Oblig submission. This version will not work on OSx as I used the Oracle Database Server for my database and Oracle does not provide any database server support for latest OSx. 
 
 ## Requirements: (more like softwares I used)##
-Operating Sytem: ___Windows 7___
-IDE: ___Eclipse____
-Server: ___Oracle WebLogic Server 12c (12.1.2)___
-Database: ___Oracle Database Server 11g___
-Developer: ___Oracle SQL Developer Version 4.0.3.16___
-Web Browser: ___Firefox (for testing with console used Chrome)___
+* Operating Sytem: ___Windows 7___
+* IDE: ___Eclipse___
+* Server: ___Oracle WebLogic Server 12c (12.1.2)___
+* Database: ___Oracle Database Server 11g___
+* Developer: ___Oracle SQL Developer Version 4.0.3.16___
+* Web Browser: ___Firefox (for testing with console used Chrome)___
 
 ### Please follow the setup requirements in order to run the web application: ###
 
-1. Download the project zip from the ___[Oblig1-Git](https://github.com/samiulsaki/unik4730-oblig1.git)___
+1. Download the project zip from the ___[Github Repository](https://github.com/samiulsaki/unik4730.git)___
 
 2. Unzip the zip file
 
