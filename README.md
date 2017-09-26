@@ -32,6 +32,6 @@ Right click on the weblogic server on Eclipse and select add/remove and add the 
 
 9. Download SQL developer or similar software to connect to the orcl database using the system as username and password (default is always oracle) and import the ___vehicleTable.sql___ to the orcl database from the /Database folder in the repository. Easy way to do this is right click the orcl database connection and open the select open SQL worksheet. Inside the worksheet just copy and paste the content of the vehicleTable.sql file and  and hit Run Script or hit F5. That will import the VEHICLE_REGS table to the database (important for the web application). Check the link for more info: https://docs.oracle.com/cd/E17781_01/server.112/e18804/impexp.htm#BABJIIIE
 
-10. Finally start (or restart) the weblogic server from Eclipse. Open a web browser and enter http://localhost:7001/com.vehicle.rest/ and take it from there.
+10. Finally start (or restart) the weblogic server from Eclipse. Open a web browser and enter http://localhost:7001/com.vehicle.rest/ and take it from there. Readme.html file will give you some more informations.
 
 # Happy Browsing #
