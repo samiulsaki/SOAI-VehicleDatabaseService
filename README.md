@@ -1,4 +1,4 @@
-# Service Oriented Architecture Implementation - RESTful Vehicle Database Web Service #
+# Service Oriented Architecture Implementation - Vehicle Database Web Service (RESTful) #
 ======================================================================================
 
 At first I would like to apologise for using the older platform of the IDE and database servers. I was following some tutorials online and kinda carried aways using the similar platform as the tutorial was about 5 years old. By the time I finished with the assignment I realised that converting / adjusting the entire project to adjust with the newer version of the platforms will require doing the project from the beginning. I will keep this in mind and will use the latest and and more compact IDE for my future projects. This version will not work on OSx as I used the Oracle Database Server for my database and Oracle does not provide any database server support for latest OSx. 
